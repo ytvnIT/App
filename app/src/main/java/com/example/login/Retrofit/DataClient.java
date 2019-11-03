@@ -26,8 +26,9 @@ public interface DataClient {
     @POST("api/login")
     Call<String> signin(@Field("mahv") String mahv, @Field("password") String password);
 
-//    Call<String> updateUser(@Field("mahv") String mahv, @Field("password") String password);
-    //    @FormUrlEncoded
-//    @GET("user")
-//    Call<ArrayList<User>> updateUser();
+    @FormUrlEncoded
+    @POST("api/reset")
+    Call<String> reset(@Field("mahv") String mahv);
+
+
 }

@@ -10,15 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.Volley;
 import com.example.login.Retrofit.APIUtils;
 import com.example.login.Retrofit.DataClient;
-
-import org.json.JSONArray;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -47,27 +40,41 @@ public class Activity_Login extends AppCompatActivity {
         btn_Login2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent intent_Menu = new Intent(Activity_Login.this, Activity_Menu.class);
-//                startActivity(intent_Menu);
+//
                 DataClient dataClient= APIUtils.getData();
 
 //                Call<String> callback=dataClient.get();
-                Call<String> callback=dataClient.signin("17520001", "123");
-                callback.enqueue(new Callback<String>() {
-                    @Override
-                    public void onResponse(Call<String> call, Response<String> response) {
-                        if(response!=  null){
-                            String message=response.body();
-                            Log.d("BBB",message);
-                            Toast.makeText(Activity_Login.this, message, Toast.LENGTH_SHORT).show();
-                        }
-                    }
+                String mahv=et_user.getText().toString(), password=et_password.getText().toString();
 
-                    @Override
-                    public void onFailure(Call<String> call, Throwable t) {
-                        Log.d("BBB",t.getMessage());
-                    }
-                });
+                if(mahv.trim().length()==0 || password.trim().length()==0)
+                    Toast.makeText(Activity_Login.this, "Vui lòng nhập đầy đủ thông tin", Toast.LENGTH_LONG).show();
+                else {
+
+                    Call<String> callback = dataClient.signin(mahv, password);
+                    callback.enqueue(new Callback<String>() {
+                        @Override
+                        public void onResponse(Call<String> call, Response<String> response) {
+                            if (response != null) {
+                                String message = response.body();
+                                Log.d("BBB", message);
+                                if(message.equals("success")) {
+                                    Toast.makeText(Activity_Login.this, message, Toast.LENGTH_SHORT).show();
+                                    Intent intent_Menu = new Intent(Activity_Login.this, Activity_Menu.class);
+                                     startActivity(intent_Menu);
+                                }
+                                else
+                                    Toast.makeText(Activity_Login.this, "Đăng nhập thất bại", Toast.LENGTH_SHORT).show();
+                                    et_user.setText("");
+                                    et_password.setText("");
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<String> call, Throwable t) {
+                            Log.d("BBB", t.getMessage());
+                        }
+                    });
+                }
 //                Toast.makeText(Activity_Login.this, "Bạn đã đăng nhập thành công!", Toast.LENGTH_SHORT).show();
             }
         });
@@ -79,9 +86,9 @@ public class Activity_Login extends AppCompatActivity {
 
 
     private void Anhxa() {
-        et_user = (EditText) findViewById(R.id.et_MSSV);
+        et_user = (EditText) findViewById(R.id.et_MSSV_fg);
         et_password = (EditText) findViewById(R.id.et_Password);
-        btn_Login2 = (Button) findViewById(R.id.btn_Login2);
-        btn_back = (Button) findViewById(R.id.btn_back); // Button back
+        btn_Login2 = (Button) findViewById(R.id.btn_Send_fg);
+        btn_back = (Button) findViewById(R.id.btn_back_fg); // Button back
     }
 }
