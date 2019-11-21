@@ -20,15 +20,20 @@ public interface DataClient {
     Call<ArrayList<String>> getArray();
 
     @GET("api/login")
-    Call<String> login( @Query("mahv") String mahv, @Query("password") String password);
-
+    Call<String>  signin( @Query("mahv") String mahv, @Query("password") String password);
+///real
     @FormUrlEncoded
     @POST("api/login")
-    Call<String> signin(@Field("mahv") String mahv, @Field("password") String password);
+    Call<String> login (@Field("mahv") String mahv, @Field("password") String password);
 
     @FormUrlEncoded
     @POST("api/reset")
     Call<String> reset(@Field("mahv") String mahv);
+
+    @FormUrlEncoded
+    @POST("api/setpassword")
+    Call<String> setPassword(@Field("mahv") String mahv, @Field("password") String password, @Field("token") String token);
+
 
 
 }
