@@ -34,6 +34,9 @@ public interface DataClient {
     @POST("api/setpassword")
     Call<String> setPassword(@Field("mahv") String mahv, @Field("password") String password, @Field("token") String token);
 
+    @GET("/api/diemdanh/{TOKEN}/{MAHV}")
+    Call <String> checkIn(@Path("TOKEN") String TOKEN, @Path("MAHV") String MAHV);
+
 
 
 }

@@ -47,6 +47,9 @@ public class Activity_Login extends AppCompatActivity implements View.OnClickLis
         switch (view.getId()) {
             case R.id.btn_back_rp:
                 Intent intent_back_log = new Intent(Activity_Login.this, MainActivity.class);
+                intent_back_log.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_NO_HISTORY);
+//                intent_back_log.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//                intent_back_log.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                 startActivity(intent_back_log);
                 break;
 
