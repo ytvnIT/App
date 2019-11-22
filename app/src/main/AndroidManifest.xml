@@ -14,20 +14,29 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".CheckIn.CheckIn">
 
-        </activity>
-        <activity android:name=".Login.Activity_ResetPassword"></activity>
-        <activity android:name=".Activity_Menu" />
-        <activity android:name=".Activity_Login">
+        <activity android:name=".CheckIn.CheckIn">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Login.Activity_ResetPassword"></activity>
+        <activity android:name=".Activity_Menu" />
+        <activity android:name=".Activity_Login"/>
+
+        <activity android:name=".Activity_Grades"></activity>
+        <activity android:name=".Activity_Checkin" >
+
+
+        </activity>
+
         <activity android:name=".MainActivity"></activity>
         <activity android:name=".Login.Activity_Forgotpassword"></activity>
+
+
+
     </application>
 
 </manifest>
