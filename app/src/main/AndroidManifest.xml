@@ -14,17 +14,19 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Login.Activity_ResetPassword"></activity>
-        <activity android:name=".Activity_Menu" />
-        <activity android:name=".Activity_Login" />
-        <activity android:name=".MainActivity"></activity>
-        <activity android:name=".Login.Activity_Forgotpassword">
+        <activity android:name=".Activity_Grades"></activity>
+        <activity android:name=".Activity_Checkin" />
+        <activity android:name=".Login.Activity_ResetPassword" />
+        <activity android:name=".Activity_Menu">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Activity_Login" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".Login.Activity_Forgotpassword" />
     </application>
 
 </manifest>
